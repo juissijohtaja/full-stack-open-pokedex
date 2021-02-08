@@ -21,6 +21,8 @@ const App = () => {
     return <ErrorMessage error={error} />
   }
 
+  console.log('pokemonList', pokemonList)
+
   return (
     <Router>
       <Switch>
