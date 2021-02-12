@@ -1,1 +1,1 @@
-web: npm run start-prodshit
+web: npm run start-prod
