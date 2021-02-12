@@ -27,12 +27,3 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
-      - name: heroku deployment
-        uses: akhileshns/heroku-deploy@v3.10.9
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "jkpokemon"
-          heroku_email: "juha.koivu@outlook.com"
-          healthcheck: "https://jkpokemon.herokuapp.com/health"
-          checkstring: "ok"
-          rollbackonhealthcheckfailed: true
