@@ -1,4 +1,4 @@
-name: Deployment pipeline
+name: Deploy
 
 on:
   push:
@@ -6,28 +6,11 @@ on:
       - master
 
 jobs:
-  simple_deployment_pipeline:
-    runs-on: ubuntu-18.04
+  build:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: npm install 
-        run: npm install  
-      - name: lint
-        run: npm run eslint
-      - name: build
-        run: npm run build
-      - name: test
-        run: npm test
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
-      - uses: akhileshns/heroku-deploy@v3.10.9 # Heroku deployment
+      - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "jkpokedex" #Must be unique in Heroku
