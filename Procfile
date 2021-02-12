@@ -1,1 +1,1 @@
-web: npm run shitter
+web: npm run start-prod
