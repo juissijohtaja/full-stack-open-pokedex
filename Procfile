@@ -1,1 +1,1 @@
-web: npm run blake
+web: npm run start-prod
