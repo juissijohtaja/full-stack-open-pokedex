@@ -13,6 +13,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "jkpokedex" #Must be unique in Heroku
+          heroku_app_name: "jkpokemon" #Must be unique in Heroku
           heroku_email: "juha.koivu@outlook.com"
-          
