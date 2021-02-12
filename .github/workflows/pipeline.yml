@@ -35,3 +35,4 @@ jobs:
           heroku_email: "juha.koivu@outlook.com"
           healthcheck: "https://jkpokemon.herokuapp.com/health"
           checkstring: "ok"
+          rollbackonhealthcheckfailed: true
