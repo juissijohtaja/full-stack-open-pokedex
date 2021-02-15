@@ -27,7 +27,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          <h2>Pokemon Index Is Amazing</h2>
+          <h2>New Pokemon Index Is Amazing</h2>
           <PokemonList pokemonList={pokemonList} />
         </Route>
         <Route path="/pokemon/:name" render={(routeParams) => {
