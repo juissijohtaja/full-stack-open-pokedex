@@ -48,11 +48,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
           RELEASE_BRANCHES: main
-      - name: slack notifications
+      - name: slack notification success
         uses: 8398a7/action-slack@v3
         with:
           status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+          fields: repo,message,commit,job,took # selectable (default: repo,message)
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: always() # Pick up events even if the job fails or is canceled.
+        if: success() # Pick up events even if the job fails or is canceled.
+      - name: slack notification failure
+        if: failure() # Pick up events even if the job fails or is canceled.
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
