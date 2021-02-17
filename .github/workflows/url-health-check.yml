@@ -1,9 +1,14 @@
 name: URL Health Check
 
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '*/15 * * * *'
+  push:
+    branches:
+      - main
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+  # schedule:
+  #   - cron:  '0 0 1 * *'
 
 jobs:
   url-health-check:
